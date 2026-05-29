@@ -12,6 +12,7 @@ class TransactionRequest(BaseModel):
     amount: float
     type: str
     date: str
+    selected_date: str = None
 
 @router.get("/")
 def get_transactions(user_id: int, db: Session = Depends(get_db)):
@@ -28,6 +29,7 @@ def create_transaction(user_id: int, request: TransactionRequest, db: Session = 
         amount=request.amount,
         type=request.type,
         date=request.date,
+        selected_date=request.selected_date,
     )
     db.add(transaction)
     db.commit()

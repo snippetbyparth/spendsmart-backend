@@ -22,6 +22,7 @@ class Transaction(Base):
     amount = Column(Float, nullable=False)
     type = Column(String, nullable=False)
     date = Column(String, nullable=False)
+    selected_date = Column(String, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
     
     user = relationship("User", back_populates="transactions")
